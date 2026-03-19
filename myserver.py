@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Header, HTTPException
 from pydantic import BaseModel
 from typing import Optional
+import uvicorn
 
 app = FastAPI()
 
@@ -36,3 +37,6 @@ def json_body(item: Item):
         "received_name": item.name,
         "received_value": item.value
     }
+
+if __name__ == "__main__":
+    uvicorn.run("app:app", host="127.0.0.1", port=8000, reload=True)
